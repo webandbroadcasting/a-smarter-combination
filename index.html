@@ -1,0 +1,353 @@
+<html lang="en" dir="ltr"><head>
+    <title>Towards a Smarter Combination of Broadcasting and the Web</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- 
+      === NOTA BENE ===
+      For the three scripts below, if your spec resides on dev.w3 you can check them
+      out in the same tree and use relative links so that they'll work offline,
+     -->
+    
+    
+
+  <style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* --- INLINES --- */
+em.rfc2119 { 
+    text-transform:     lowercase;
+    font-variant:       small-caps;
+    font-style:         normal;
+    color:              #900;
+}
+
+h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+    border: none;
+}
+
+dfn {
+    font-weight:    bold;
+}
+
+a.internalDFN {
+    color:  inherit;
+    border-bottom:  1px solid #99c;
+    text-decoration:    none;
+}
+
+a.externalDFN {
+    color:  inherit;
+    border-bottom:  1px dotted #ccc;
+    text-decoration:    none;
+}
+
+a.bibref {
+    text-decoration:    none;
+}
+
+cite .bibref {
+    font-style: normal;
+}
+
+code {
+    color:  #ff4500;
+}
+
+
+/* --- --- */
+ol.algorithm { counter-reset:numsection; list-style-type: none; }
+ol.algorithm li { margin: 0.5em 0; }
+ol.algorithm li:before { font-weight: bold; counter-increment: numsection; content: counters(numsection, ".") ") "; }
+
+/* --- TOC --- */
+.toc a, .tof a {
+    text-decoration:    none;
+}
+
+a .secno, a .figno {
+    color:  #000;
+}
+
+ul.tof, ol.tof {
+    list-style: none outside none;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-style:   italic;
+}
+
+/* --- TABLE --- */
+table.simple {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    border-bottom:  3px solid #005a9c;
+}
+
+.simple th {
+    background: #005a9c;
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+}
+
+.simple th[scope="row"] {
+    background: inherit;
+    color:  inherit;
+    border-top: 1px solid #ddd;
+}
+
+.simple td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+    background: #f0f6ff;
+}
+
+/* --- DL --- */
+.section dd > p:first-child {
+    margin-top: 0;
+}
+
+.section dd > p:last-child {
+    margin-bottom: 0;
+}
+
+.section dd {
+    margin-bottom:  1em;
+}
+
+.section dl.attrs dd, .section dl.eldef dd {
+    margin-bottom:  0;
+}
+</style><link rel="stylesheet" href="http://www.w3.org/StyleSheets/TR/W3C-ED"></head>
+  <body><div class="head">
+  <p>
+    
+      <a href="http://www.w3.org/"><img width="72" height="48" src="http://www.w3.org/Icons/w3c_home" alt="W3C"></a>
+    
+  </p>
+  <h1 class="title" id="title">Towards a Smarter Combination of Broadcasting and the Web</h1>
+  
+  <h2 id="w3c-editor-s-draft-26-march-2013"><abbr title="World Wide Web Consortium">W3C</abbr> Business Group Editor's Draft 26 March 2013</h2>
+  <dl>
+    
+      <dt>This version:</dt>
+      <dd><a href=""></a></dd>
+      <dt>Latest published version:</dt>
+      <dd><a href="http://www.w3.org/TR/xxx-xxx/">http://www.w3.org/TR/xxx-xxx/</a></dd>
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    <dt>Editor:</dt>
+    <dd><a href="http://www.tomo-digi.co.jp">Yosuke Funahashi</a>, <a href="http://www.tomo-digi.co.jp">Tomo-Digi Corporation</a></dd>
+
+    
+      <dt>Initial Contributors:</dt>
+      <dd><span>Shuichi Fujisawa</span>, NHK (Japan Broadcasting Corporation)</dd>
+<dd><span>Tomoaki Kataoka</span>, Nippon Television Network Corporation</dd>
+<dd><span>Tadahisa Kawaguchi</span>, TV Asahi Corporation</dd>
+<dd><span> Ichiro Nobukuni</span>, Tokyo Broadcasting System Television, Inc.</dd>
+<dd><span>Masato Abe</span>, TV TOKYO Corporation</dd>
+<dd><span>Yoshiyuki Seki</span>, Fuji Television Network, inc.</dd>
+<dd><span>Hajime Hashimoto</span>, WOWOW INC.</dd>
+
+    
+  </dl>
+  
+  
+  
+  
+    
+<p class="copyright">
+    <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 
+    2013
+    the Contributors to the Towards a Smarter Combination of Broadcasting and the Web Specification, published by the
+    <a href="http://example.org/really-cool-wg">Web and Broadcasting Business Group</a> under the
+    
+      <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
+      A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.
+    
+  </p>
+
+    
+  
+  <hr>
+</div>
+
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
+<p>The aim of this document is to clarify fundamental value propositions that core information media in a region or a community must have, as both Broadcasting and the Web are these days essential building blocks of this core information media.</p>
+
+<p>The contributors introduce two new viewpoints that the discussion on 'Web and TV' has missed so far: one is from the viewpoint of 'Broadcasting and the Web'; that is, how to combine the two largest information spaces on the planet synergistically with higher capabilities of delivering video and audio content. The other is from the viewpoint of the necessity of higher-level requirements such as the needs of society over and above the let-the-market-decide way of thinking.</p>
+
+<p>We, the contributors, are mainly Japanese broadcasters. However, we are trying to establish global value propositions by taking into account the diversity of core information media in different regions and communities.</p>
+
+<p>The fundamental value propositions of combining core information media from Broadcasting and the Web, in a nutshell, are:
+</p><ul><li> Sense of safety and security among viewers and users
+<ul><li> Information transmission during unexpected social crises
+</li><li> Protection against malicious services
+</li><li> Protection against malware 
+</li><li> Protection of privacy
+</li></ul>
+</li><li> Openness of service providers and device manufacturers
+</li></ul>
+<p></p>
+<p>The contributors hope that this document will stimulate discussion and build a better understanding on this subject among stakeholders.</p>
+
+    </section><section id="sotd" class="introductory"><h2>Status of This Document</h2>
+  
+    
+<p>
+    This specification was published by the <a href="http://example.org/really-cool-wg">Web and Broadcasting Business Group</a>.
+    It is not a W3C Standard nor is it on the W3C Standards Track.
+    
+      Please note that under the 
+      <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+      there is a limited opt-out and other conditions apply.
+    
+    Learn more about 
+    <a href="http://www.w3.org/community/">W3C Community and Business Groups</a>.
+  </p>
+      
+      
+    
+  
+</section><section id="toc"><h2 class="introductory">Table of Contents</h2><ul class="toc"><li class="tocline"><a href="#defining-important-terms" class="tocxref"><span class="secno">1. </span>Defining Important Terms</a><ul class="toc"><li class="tocline"><a href="#core-information-service-and-core-information-media" class="tocxref"><span class="secno">1.1 </span>Core Information Service and Core Information Media</a></li><li class="tocline"><a href="#broadcasting-and-broadcasting-media" class="tocxref"><span class="secno">1.2 </span>Broadcasting, and Broadcasting Media</a></li><li class="tocline"><a href="#the-internet-and-the-web" class="tocxref"><span class="secno">1.3 </span>The Internet and The Web</a></li><li class="tocline"><a href="#television-defined" class="tocxref"><span class="secno">1.4 </span>Television Defined</a></li></ul></li><li class="tocline"><a href="#raising-two-viewpoints" class="tocxref"><span class="secno">2. </span>Raising Two Viewpoints</a><ul class="toc"><li class="tocline"><a href="#broadcasting-and-the-web" class="tocxref"><span class="secno">2.1 </span>Broadcasting and the Web</a></li><li class="tocline"><a href="#fundamental-value-proposition" class="tocxref"><span class="secno">2.2 </span>Fundamental Value Proposition</a></li></ul></li><li class="tocline"><a href="#prerequisite-1-reassessing-the-bias-in-html5-to-unleash-the-potential-of-the-web" class="tocxref"><span class="secno">3. </span>Prerequisite 1 : Reassessing the Bias in HTML5 to Unleash the Potential of the Web</a><ul class="toc"><li class="tocline"><a href="#bias-in-html5" class="tocxref"><span class="secno">3.1 </span>Bias in HTML5</a></li><li class="tocline"><a href="#reassessing-the-bias-to-unleash-the-potential-of-the-web" class="tocxref"><span class="secno">3.2 </span>Reassessing the Bias to Unleash the Potential of the Web</a></li></ul></li><li class="tocline"><a href="#prerequisite-2-understanding-social-needs-for-core-information-media" class="tocxref"><span class="secno">4. </span>Prerequisite 2 : Understanding Social Needs for Core Information Media</a><ul class="toc"><li class="tocline"><a href="#a-history-of-universal-service" class="tocxref"><span class="secno">4.1 </span>A History of Universal Service</a></li></ul></li><li class="tocline"><a href="#prerequisite-3-focusing-core-information-media-using-both-broadcasting-and-the-web" class="tocxref"><span class="secno">5. </span>Prerequisite 3 : Focusing Core Information Media using Both Broadcasting and the Web</a></li><li class="tocline"><a href="#fundamental-value-proposition-1-sense-of-safety-and-security-for-viewers-and-users" class="tocxref"><span class="secno">6. </span>Fundamental Value Proposition 1: Sense of Safety and Security for Viewers and Users</a></li><li class="tocline"><a href="#fundamental-value-proposition-2-openness-of-services-and-the-device-market" class="tocxref"><span class="secno">7. </span>Fundamental Value Proposition 2: Openness of Services and the Device Market</a></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">A. </span>Acknowledgements</a></li></ul></section>
+    
+    <section id="defining-important-terms">
+      <!--OddPage--><h2><span class="secno">1. </span>Defining Important Terms</h2>
+      <section id="core-information-service-and-core-information-media">
+      	<h3><span class="secno">1.1 </span>Core Information Service and Core Information Media</h3>
+      	<ul><li> <i></i><p><i><b>Core Information Service</b></i> is a universal service for a region or a community that disseminates both essential information for daily life and vital information before, during and after regional crises to help maintain the safety and security of the region or  community in the event of man-made and natural disasters.
+</p></li><li> <i></i><p><i><b>Core Information Media</b></i> is a holistic entity, or a complete information system  that creates the core information service in a region or a community.  The core information medium consists of numerous entities: ex. radio waves, telecommunications, optical disks, web servers, television stations, news editors and reporters. How these entities are actually combined differs by how core information media is implemented. However, all implementations have the same two-layer, large-scale structure. The upper layer consists of activities performed by humans such as information gathering, creation, selection, edition, etc. It also includes the activities of news agencies, collective-intelligence curators, and public-opinion influencers. The lower layer includes activities performed by computers and machines with the objective of not only distributing information but also helping people work effectively and efficiently. Of course the boundary between the upper layer and the lower layer is blurring as technology advances.
+</p></li></ul>
+      </section>
+      <section id="broadcasting-and-broadcasting-media">
+		<h3><span class="secno">1.2 </span>Broadcasting, and Broadcasting Media</h3>
+		<ul><li> <i></i><p><i><b>Broadcasting</b></i> is a method of distributing content via mass-communication infrastructure using radio waves to a dispersed audience; in which the transmissions are intended for direct reception by the general public.
+</p></li><li> <i></i><p><i><b>Broadcasting Media</b></i> is a type of core information media that uses broadcasting as its foundation. In many countries, broadcasters have taken the responsibility to build, maintain and develop broadcasting media under the law prescribed in each country.
+</p></li></ul>
+      </section>
+      <section id="the-internet-and-the-web">
+		<h3><span class="secno">1.3 </span>The Internet and The Web</h3>
+		<ul><li> <i></i><p><i><b>The Internet</b></i> is a global system of interconnected computer networks that use the standard Internet protocol suite to serve billions of users worldwide. It is a network of networks from local to global in scope consisting of millions of private, public, academic, business, and government networks that are connected by a broad array of electronic, wireless, and optical networking technologies.
+</p></li><li> The term <i><b>the Web</b></i> is short for 'the World Wide Web', and is an immense  information space of interlinked hypertext documents written in web standard languages such as HTML, CSS, and  JavaScript and is accessed mainly via the Internet. The content of the Web is primarily text, images, videos, and interactive multimedia viewed with a user agent, such as a web browser, and navigated via hyperlinks.
+<p></p></li></ul>
+      </section>
+      <section id="television-defined">
+		<h3><span class="secno">1.4 </span>Television Defined</h3>
+		<ul><li> Traditionally, <i><b>Television</b></i> is a device that displays video signals received from video broadcasting sources. A more up-to-date definition would include   video signal sources provided by broadband technology, internet technology and recorded media. In this document, we recognize that television is defined as a device that can display any video signal from any media.
+<p></p></li></ul>
+      </section>
+    </section>
+    <section id="raising-two-viewpoints">
+      	<!--OddPage--><h2><span class="secno">2. </span>Raising Two Viewpoints</h2>
+      	<p>Connected TV, Hybrid Broadcast and Broadband, and Hybrid TV have been key words among various stakeholders in related industries for the past three years. <abbr title="World Wide Web Consortium">W3C</abbr>'s Web and TV activities have been in the spotlight and have become a gravitational center in those discussions with the power and significance of HTML5.</p>
+<p><abbr title="World Wide Web Consortium">W3C</abbr>'s Web and TV activities thus far have been very fruitful but we, the contributors of this document, would like to further enhance activity by framing a new discussion to achieve deliverable results.</p>
+		<section id="broadcasting-and-the-web">
+			<h3><span class="secno">2.1 </span>Broadcasting and the Web</h3>
+			<p>The first viewpoint we would like to raise is 'Core Information Media using Both Broadcasting and the Web as Its Foundation', in short, 'Broadcasting and the Web'.
+</p>
+<p> What Core Information Media can we build with 'Broadcasting and the Web' as its foundation? What standards are necessary to achieve that? How does the diversity of core information media over regions or communities fit into a single global standard with well-considered architecture? These are not issues from the viewpoint of 'Web and TV' but from the viewpoint of 'Broadcasting and the Web', and we have not discussed these topics thus far in <abbr title="World Wide Web Consortium">W3C</abbr> Web and TV activities.
+</p>
+<p> It's obvious that broadcasting and the Internet are the two most important global infrastructures in delivering audio and video content today. While the Internet and the Web have already been fully integrated, broadcasting and the Web continues to suffer from poor integration. So the question is how do we design a better interface between broadcasting and the Web to create core information media using them.
+</p>
+		</section>
+		<section id="fundamental-value-proposition">
+			<h3><span class="secno">2.2 </span>Fundamental Value Proposition</h3>
+			<p> The second viewpoint we would like to raise is the 'Fundamental Value Proposition of Core Information Media for a Region or a Community'.
+</p>
+<p>When we consider the value propositions of market players regarding 'Web and TV', a suitable approach for them is to let the market decide. However, when you look at the value proposition of core information media in a region or a community, market forces may be applied in some ways but are insufficient in others. Core information service is a universal service and must cover at least 97% of a region or a community. Additionally, core information media should contain services for regional risks such as natural disasters and wars. However, making a service universal is costly and does not allow companies to maximize profits, and so decisions made by the market do not serve the long-term safety and security interests of a region or a community well.
+</p>
+      </section>
+    </section>
+    
+    <section id="prerequisite-1-reassessing-the-bias-in-html5-to-unleash-the-potential-of-the-web">
+    	<!--OddPage--><h2><span class="secno">3. </span>Prerequisite 1 : Reassessing the Bias in HTML5 to Unleash the Potential of the Web</h2>
+    	<section id="bias-in-html5">
+    		<h3><span class="secno">3.1 </span>Bias in HTML5</h3>
+    		<p> As clearly stated in <abbr title="World Wide Web Consortium">W3C</abbr>'s "Hyper Text Markup Language Version 5" working draft, HTML5 is biased towards HTTP as its transport protocol; and since HTTP is standardized as an internet application-layer protocol in IETF, it's clear HTML5 is biased towards the Internet as its transport layer and system. HTML5 is a document markup language, which means it is theoretically free of a tranport layer from a layered architecture point of view.
+</p><p> We, the contributors, are not dissatisfied with the bias. It has been relevant in the development of the history of the Web and will remain relevant in the development of standards going forward. Historically, Tim Berners-Lee invented the World Wide Web on top of the existing Internet in 1989. Additionally, he published the specifications of both HTML and HTTP. In terms of developmental efficiency, assuming a specific protocol for adjacent layers is a good way to develop a standard while at the same time avoiding excessively abstract discussions on the standard.
+</p>
+    	</section>
+    	<section id="reassessing-the-bias-to-unleash-the-potential-of-the-web">
+    		<h3><span class="secno">3.2 </span>Reassessing the Bias to Unleash the Potential of the Web</h3>
+    		<p> Generally speaking, once a good standard has been developed by assuming specific protocols for adjacent layers, it is time to eliminate the bias and take into account other protocols to improve the standards. However, HTML5 and HTTP have been so strongly bound that eliminating the bias is counter productive. Nonetheless, reassessing the scope of the transport layer would help unleash the full potential of the Web.
+</p><p> Because broadcasting is currently the other large transport infrastructure, we should not ignore it, nor should we avoid it. We need to recognise that 'Broadcasting and the Web' is a key concept that both web and broadcasting people should always bear in mind when considering media. Therefore from the viewpoint of standardization, the two important objectives are, 1. HTML5 interfaces for broadcasting and, 2. broadcasting specifications for HTML5. Setting these two standards will lead to a smarter combination of Broadcasting and the Web that will, once again, help us unleash the full potential of the Web.
+</p>
+    	</section>
+    </section>
+
+    <section id="prerequisite-2-understanding-social-needs-for-core-information-media">
+    	<!--OddPage--><h2><span class="secno">4. </span>Prerequisite 2 : Understanding Social Needs for Core Information Media</h2>
+    	<p> The social needs for core information media for a community or a region are universal from the viewpoint of time and space, history, and geography.
+</p><p> An early example of core information media and universal service is the postal system of 16th and 17th century Europe. Publishers recognised the power of the postal system and at the same time through the use of the Gutenberg press increased their output. They then began a relationship with the postal system to distribute newspapers across the countries of Europe. This is the first example of media "broadcast" nation-wide.
+</p><p> Let's look in more detail at the history of universal service to build a better understanding.
+</p>
+		<section id="a-history-of-universal-service">
+			<h3><span class="secno">4.1 </span>A History of Universal Service</h3>
+			<p> The concept of universal service appears to have originated with Rowland Hill and the Uniform Penny Post which he introduced in the United Kingdom in 1837. Though Hill never used the term "universal service", his postal system had the hallmarks of early universal service; postal rates were reduced to uniform rates throughout the nation which were affordable to most Britons, enabled by the postage stamp (first introduced here) and a General Post Office monopoly on mail. 
+</p><p> The term "universal service", on the other hand, appears to have originated with Theodore Newton Vail, president of American Telephone &amp; Telegraph (the original AT&amp;T) and head of the Bell System, in 1907 with the corporate slogan "One Policy, One System, Universal Service".
+</p><p> Universal service in telecommunications was eventually established as U.S. national policy by the Communications Act of 1934, whose preamble declared its purpose as “to make available, so far as possible, to all the people of the United States, a rapid, efficient, nation-wide, and world-wide wire and radio communication service with adequate facilities at reasonable charges”.
+</p><p> The U.S. national policy has changed twice so far and will change in the future, mainly to follow the advance in technologies and partly to avoid monopoly. However, the purpose declared in the preamble has been kept and never changed.
+</p>
+		</section>
+    </section>
+
+    <section id="prerequisite-3-focusing-core-information-media-using-both-broadcasting-and-the-web">
+    	<!--OddPage--><h2><span class="secno">5. </span>Prerequisite 3 : Focusing Core Information Media using Both Broadcasting and the Web</h2>
+    	<p> Throughout time, core information media as a universal service has been such an indispensable mechanism in communities and regions that each community and region created their own unique core information media using the most effective tools available to them based on their customs, culture, climate, and topography. This illustrates the diversity and pluralism of core information media while at the same time it shows the universality of the concept.
+</p><p> In more than a few countries, broadcasting has always been the key infrastructure of core information media. Broadcasters have always accepted the important social responsibility to create, maintain, and develop core information service, and to live up to essential legal obligations set by society. Therefore, we must take into account the importance of a broadcaster's existing role and function within a society when we design new core information media with 'Broadcasting and the Web'. However, we should in no way tamper with the vital role and function of broadcasting.
+</p>
+    </section>
+
+    <section id="fundamental-value-proposition-1-sense-of-safety-and-security-for-viewers-and-users">
+    	<!--OddPage--><h2><span class="secno">6. </span>Fundamental Value Proposition 1: Sense of Safety and Security for Viewers and Users</h2>
+    	<p>The first fundamental value proposition of core information media with Broadcasting and the Web is creating a sense of safety and security for viewers and users. How can we achieve this? In a nutshell, there are a four key elements that together form a sense of safety among people and help build a secure environment among viewers and users.
+</p>
+<ul><li> Information Transmission before, during and after Unexpected Crises
+<ul><li> Implements mechanisms to convey information in an agile and reliable way even for unexpected crises. For example, emergency alert information takes the highest priority for delivery through the infrastructure and overrides the display of any other kind of information.
+</li></ul>
+</li><li> Protection against Malicious Services
+<ul><li> Implements mechanism to minimize viewers' and users' risk of getting caught up in frauds and unethical or criminal business practices while using services and applications on core information media. Consumer and child protection are also important viewpoints to consider.
+</li></ul>
+</li><li> Protection against Malware
+<ul><li> Implements mechanism to protect viewers' and users' information environments from computer viruses and malware on core information media.
+</li></ul>
+</li><li> Protection of Privacy
+<ul><li> Implements mechanism to protect viewers' and users' private information from being exposed or copied without permission.
+</li></ul>
+</li></ul>
+    </section>
+
+    <section id="fundamental-value-proposition-2-openness-of-services-and-the-device-market">
+    	<!--OddPage--><h2><span class="secno">7. </span>Fundamental Value Proposition 2: Openness of Services and the Device Market</h2>
+    	<p> The second fundamental value proposition is the openness of services and the device market over core information media with Broadcasting and the Web.
+</p>
+<ul><li> Standards and relevant operational rules are two key points that help achieve that openness effectively and efficiently.
+<ul><li> Standards with well-considered architecture and interfaces help viewers and users avoid getting locked into specific service providers or device manufactures.
+</li><li> Relevant operational rules bring an essential balance between competing areas and cooperative areas. This balance helps maximize the advantage of markets within and around core information media.
+</li></ul>
+</li></ul>
+    </section>
+
+    <section class="appendix" id="acknowledgements">
+      <!--OddPage--><h2><span class="secno">A. </span>Acknowledgements</h2>
+      <p>
+        Thanks to Tim Berners-Lee for inventing HTML, without which none of this would exist.
+      </p>
+    </section>
+  
+
+</body>
+</html>
